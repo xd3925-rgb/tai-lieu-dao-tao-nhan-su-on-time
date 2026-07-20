@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>On Time Study Space — Cẩm nang Đào tạo Nhân sự</title>
+<style>
+:root{
+  --navy:#2E5F9C; --navy-bg:#EAF0F9;
+  --ink:#26314f; --muted:#8b93ad; --line:#e7ebf7;
+  --teal:#0aa88f; --teal-bg:#e3faf5;
+  --amber:#e08a1e; --amber-bg:#fff3e0;
+  --violet:#8a5cf6; --violet-bg:#f2ecff;
+  --red:#e64a5b; --red-bg:#fdeced;
+  --green:#12b886; --green-bg:#e3faf3;
+  --gold:#c9a227; --gold-bg:#fbf3da;
+}
+*{box-sizing:border-box}
+body{margin:0;color:var(--ink);font-family:-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  background:#f4f6fb;line-height:1.4}
+.wrap{max-width:960px;margin:0 auto;padding:0 0 60px}
+
+/* ===== HERO ===== */
+.hero{background:linear-gradient(135deg,#2E5F9C 0%,#3d74bd 55%,#5b8cd6 100%);color:#fff;
+  padding:44px 24px 52px;text-align:center;position:relative;overflow:hidden}
+.hero::before,.hero::after{content:"";position:absolute;border-radius:50%;background:rgba(255,255,255,.12)}
+.hero::before{width:200px;height:200px;top:-70px;left:-50px}
+.hero::after{width:240px;height:240px;bottom:-100px;right:-60px}
+.hero .logo{font-size:40px;position:relative}
+.hero h1{font-size:26px;margin:10px 0 6px;position:relative}
+.hero p{font-size:14px;opacity:.92;margin:0;position:relative}
+.hero .badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.18);
+  border-radius:30px;padding:8px 18px;font-size:12.5px;font-weight:700;margin-top:16px;position:relative}
+
+/* ===== NAV DOTS ===== */
+.jump{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin:-24px 16px 26px;position:relative;z-index:2}
+.jump a{background:#fff;border-radius:14px;padding:9px 14px;font-size:12px;font-weight:800;text-decoration:none;
+  color:var(--ink);box-shadow:0 8px 20px rgba(46,95,156,.15);display:flex;align-items:center;gap:6px;border:1px solid var(--line)}
+.jump a .dot{width:9px;height:9px;border-radius:50%}
+
+/* ===== SECTION ===== */
+section{margin:0 16px 28px;background:#fff;border-radius:22px;box-shadow:0 12px 30px rgba(38,49,79,.07);overflow:hidden}
+.sec-head{display:flex;align-items:center;gap:14px;padding:20px 22px;color:#fff}
+.sec-head .ic{font-size:32px;flex:0 0 auto;width:54px;height:54px;display:flex;align-items:center;justify-content:center;
+  background:rgba(255,255,255,.2);border-radius:16px}
+.sec-head h2{margin:0;font-size:18px}
+.sec-head .sub{font-size:12px;opacity:.88;margin-top:2px}
+.sec-body{padding:22px}
+h3.block-title{font-size:14px;color:var(--navy);margin:0 0 12px;text-transform:uppercase;letter-spacing:.03em}
+h3.block-title:not(:first-child){margin-top:22px}
+
+/* grid cards */
+.grid{display:grid;gap:12px}
+.grid.c2{grid-template-columns:1fr 1fr}
+.grid.c3{grid-template-columns:1fr 1fr 1fr}
+.grid.c4{grid-template-columns:repeat(4,1fr)}
+@media(max-width:640px){.grid.c2,.grid.c3,.grid.c4{grid-template-columns:1fr 1fr}}
+@media(max-width:420px){.grid.c2,.grid.c3,.grid.c4{grid-template-columns:1fr}}
+
+.card{border-radius:16px;padding:14px 16px;border:1px solid var(--line)}
+.card.bg-navy{background:var(--navy-bg)}
+.card.bg-teal{background:var(--teal-bg)}
+.card.bg-amber{background:var(--amber-bg)}
+.card.bg-violet{background:var(--violet-bg)}
+.card.bg-red{background:var(--red-bg)}
+.card.bg-green{background:var(--green-bg)}
+.card.bg-gold{background:var(--gold-bg)}
+.card b.ttl{display:block;font-size:13.5px;margin-bottom:6px}
+.card ul{margin:0;padding-left:0;list-style:none;font-size:13px;color:var(--ink)}
+.card ul li{margin-bottom:5px;display:flex;gap:6px;align-items:flex-start}
+.card ul li .em{flex:0 0 auto}
+
+/* step timeline */
+.steps{display:flex;flex-direction:column;gap:0}
+.step{display:flex;gap:14px;padding:12px 0;position:relative}
+.step:not(:last-child)::after{content:"";position:absolute;left:22px;bottom:-2px;width:2px;height:14px;background:var(--line)}
+.step .num{flex:0 0 auto;width:44px;height:44px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:20px}
+.step .tx{flex:1;padding-top:2px}
+.step .tx b{display:block;font-size:14px;margin-bottom:2px}
+.step .tx span{font-size:12.5px;color:var(--muted)}
+
+/* table */
+table.dt{width:100%;border-collapse:collapse;font-size:13px}
+table.dt th{background:var(--navy-bg);color:var(--navy);padding:9px 10px;text-align:left;font-size:12.5px}
+table.dt td{padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+table.dt tr:nth-child(even) td{background:#fafcff}
+
+/* tags */
+.tag{display:inline-block;font-size:10.5px;font-weight:800;padding:3px 9px;border-radius:20px}
+.tag.red{background:var(--red-bg);color:var(--red)}
+.tag.green{background:var(--green-bg);color:var(--green)}
+.tag.gold{background:var(--gold-bg);color:var(--gold)}
+
+.note{display:flex;gap:10px;align-items:flex-start;border-radius:14px;padding:12px 15px;font-size:12.5px;margin-top:14px}
+.note .em{font-size:16px}
+
+footer{text-align:center;color:var(--muted);font-size:12px;padding:20px 16px}
+footer a{color:var(--navy);font-weight:700;text-decoration:none}
+
+@media print{
+  body{background:#fff}
+  .jump{display:none}
+  section{box-shadow:none;border:1px solid #ddd;break-inside:avoid;margin-bottom:16px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="hero">
+  <div class="logo">🏢</div>
+  <h1>ON TIME STUDY SPACE</h1>
+  <p>Cẩm nang Đào tạo Nhân sự · Quy định & Quy trình toàn hệ thống</p>
+  <div class="badge">📘 Phiên bản tổng hợp 1.0 · Cập nhật T7/2026</div>
+</div>
+
+<div class="jump">
+  <a href="#p1"><span class="dot" style="background:var(--navy)"></span>Quy định chung</a>
+  <a href="#p2"><span class="dot" style="background:var(--teal)"></span>Giao tiếp & F&B</a>
+  <a href="#p3"><span class="dot" style="background:var(--amber)"></span>Tác phong</a>
+  <a href="#p4"><span class="dot" style="background:var(--violet)"></span>KiotViet</a>
+  <a href="#p5"><span class="dot" style="background:var(--green)"></span>Thiết bị</a>
+  <a href="#p6"><span class="dot" style="background:var(--red)"></span>Vệ sinh</a>
+</div>
+
+<!-- ================= PHẦN I ================= -->
+<section id="p1">
+  <div class="sec-head" style="background:linear-gradient(135deg,#2E5F9C,#4a7cbf)">
+    <div class="ic">📋</div>
+    <div><h2>PHẦN I — Quy định chung</h2><div class="sub">Nguyên tắc · Ca làm · Kỷ luật · Lương</div></div>
+  </div>
+  <div class="sec-body">
+
+    <h3 class="block-title">⭐ 5 Nguyên tắc On Time</h3>
+    <div class="grid c2">
+      <div class="card bg-navy"><ul>
+        <li><span class="em">1️⃣</span> 💵 Khách hàng là người trả lương cho bạn</li>
+        <li><span class="em">2️⃣</span> 🎯 Thái độ làm việc quyết định mức lương</li>
+        <li><span class="em">3️⃣</span> ✨ Sạch sẽ, ngăn nắp = bộ mặt trạm</li>
+      </ul></div>
+      <div class="card bg-navy"><ul>
+        <li><span class="em">4️⃣</span> 🤝 Luôn tế nhị trong mọi tình huống</li>
+        <li><span class="em">5️⃣</span> 💯 Phục vụ vượt trên mong đợi khách hàng</li>
+      </ul></div>
+    </div>
+
+    <h3 class="block-title">⏰ Ca làm việc</h3>
+    <div class="grid c4">
+      <div class="card bg-navy" style="text-align:center">🌅<br><b>Sáng</b><br><span style="font-size:12px">06h–12h</span></div>
+      <div class="card bg-navy" style="text-align:center">☀️<br><b>Chiều</b><br><span style="font-size:12px">12h–18h</span></div>
+      <div class="card bg-navy" style="text-align:center">🌆<br><b>Tối</b><br><span style="font-size:12px">18h–23h</span></div>
+      <div class="card bg-navy" style="text-align:center">🌙<br><b>Đêm</b><br><span style="font-size:12px">23h–06h</span></div>
+    </div>
+    <div class="note" style="background:var(--navy-bg)"><span class="em">📵</span><div>Nghỉ đột xuất → báo quản lý trước <b>tối thiểu 2 tiếng</b>, kèm lý do chính đáng. Đổi ca phải có sự đồng ý của quản lý.</div></div>
+
+    <h3 class="block-title">🔄 Bàn giao ca & Nộp quỹ · 🧼 Vệ sinh an toàn</h3>
+    <div class="grid c2">
+      <div class="card bg-navy"><b class="ttl">🔄 Bàn giao ca & Nộp quỹ</b><ul>
+        <li><span class="em">🤝</span> Người nhận & bàn giao cùng chịu trách nhiệm</li>
+        <li><span class="em">🚫</span> Cấm tự ý cân đối két</li>
+        <li><span class="em">✉️</span> Két &gt;2.000.000đ → niêm phong phong bì</li>
+        <li><span class="em">💰</span> Chỉ giữ lại đúng 2.000.000đ trong két</li>
+      </ul></div>
+      <div class="card bg-navy"><b class="ttl">🧼 Vệ sinh an toàn</b><ul>
+        <li><span class="em">☕</span> Khu pha chế: sạch, không mùi</li>
+        <li><span class="em">🚻</span> Check WC 1h/lần (cao điểm 45p/lần)</li>
+        <li><span class="em">🎒</span> Đồ cá nhân tự bảo quản</li>
+        <li><span class="em">🔍</span> Nhặt được đồ → giao quản lý ngay</li>
+      </ul></div>
+    </div>
+
+    <h3 class="block-title">🚫 Việc KHÔNG được làm</h3>
+    <div class="card bg-red">
+      <ul style="display:grid;grid-template-columns:1fr 1fr;gap:6px 14px">
+        <li><span class="em">😤</span> Đùa giỡn, nói tục</li>
+        <li><span class="em">🗣️</span> Cãi lại QL/khách/đồng nghiệp</li>
+        <li><span class="em">🚬</span> Hút thuốc, ăn uống khi phục vụ</li>
+        <li><span class="em">😴</span> Ngủ trước mặt khách</li>
+        <li><span class="em">🚶</span> Tự ý rời vị trí làm việc</li>
+        <li><span class="em">❌</span> Nghỉ/đi muộn không báo</li>
+        <li><span class="em">😆</span> Tụ tập, cười lớn trong ca</li>
+        <li><span class="em">💻</span> Dùng máy tính trạm vào việc cá nhân</li>
+      </ul>
+    </div>
+
+    <h3 class="block-title">🎫 Quy chế kỷ luật & thưởng — Thẻ Xanh · Vàng · Đỏ</h3>
+    <div class="grid c3">
+      <div class="card bg-green"><b class="ttl">💚 THẺ XANH</b><ul>
+        <li><span class="em">🌟</span> Hành động đẹp, khách khen</li>
+        <li><span class="em">🎁</span> Thưởng 200.000đ</li>
+        <li><span class="em">📌</span> Tối đa 3 thẻ/tháng/hệ thống</li>
+        <li><span class="em">🧹</span> 1 xanh xóa 1 vàng</li>
+      </ul></div>
+      <div class="card bg-gold"><b class="ttl">💛 THẺ VÀNG</b><ul>
+        <li><span class="em">⚠️</span> Lỗi nhỏ: vệ sinh, quên tạp dề, laptop cá nhân</li>
+        <li><span class="em">🔢</span> 2 lần/tháng → viết giải trình</li>
+        <li><span class="em">🔢</span> 4 lần/3 tháng → sa thải</li>
+      </ul></div>
+      <div class="card bg-red"><b class="ttl">❤️ THẺ ĐỎ</b><ul>
+        <li><span class="em">🚨</span> Cãi khách, trộm cắp, bỏ ca</li>
+        <li><span class="em">⏱️</span> Anh Vinh duyệt trong 24h</li>
+        <li><span class="em">🚪</span> Sa thải ngay</li>
+      </ul></div>
+    </div>
+    <div class="note" style="background:var(--amber-bg)"><span class="em">🕵️</span><div>Che giấu 1 lỗi = phạt <b>2 thẻ vàng</b> team · Che giấu thẻ đỏ = trưởng nhóm bị đỏ ngay · Anh Vinh/cổ đông kiểm tra ngẫu nhiên 20–30% ca/trạm/tháng · Ứng viên Trưởng nhóm cần tối thiểu 3 thẻ xanh.</div></div>
+
+    <h3 class="block-title">💰 Lương · 📦 Kho & Nhận hàng</h3>
+    <div class="grid c2">
+      <div class="card bg-navy"><b class="ttl">💰 Lương</b><ul>
+        <li><span class="em">📅</span> Thử việc 2 tuần (nghỉ ngang → không lương)</li>
+        <li><span class="em">🔒</span> Cam kết tối thiểu 6 tháng</li>
+        <li><span class="em">🎉</span> Lễ/Tết = 200% lương</li>
+        <li><span class="em">💵</span> Nhận lương ngày 05 hàng tháng</li>
+        <li><span class="em">🗓️</span> Chu kỳ tính lương: 25 → 24 tháng sau</li>
+        <li><span class="em">⏳</span> Khiếu nại lương trong vòng 2 ngày</li>
+      </ul></div>
+      <div class="card bg-navy"><b class="ttl">📦 Kho & Nhận hàng</b><ul>
+        <li><span class="em">📅</span> Kiểm kho: Thứ Hai hàng tuần, trước 17h</li>
+        <li><span class="em">🔢</span> Đếm chính xác 100% nguyên liệu</li>
+        <li><span class="em">🥤</span> Cốc vỡ/mẻ → không tính</li>
+        <li><span class="em">💳</span> "Luật 200k": đơn &gt;200.000đ chuyển khoản toàn bộ</li>
+      </ul></div>
+    </div>
+
+    <h3 class="block-title">⚖️ Quản lý vi phạm</h3>
+    <table class="dt">
+      <tr><th>Loại vi phạm</th><th>Mức phạt</th></tr>
+      <tr><td>🧰 Hư hỏng / thất thoát tài sản</td><td>💸 Bồi hoàn giá trị tài sản</td></tr>
+      <tr><td>💳 Gian lận tài chính</td><td>💸 Nhẹ: bồi hoàn · 🚔 Nặng: nghỉ việc + báo trường/công an</td></tr>
+      <tr><td>🤝 Mất đoàn kết nội bộ</td><td>🚪 Nghỉ việc</td></tr>
+      <tr><td>📢 Ảnh hưởng hình ảnh trạm</td><td>🚪 Nghỉ việc</td></tr>
+      <tr><td>📣 Không thực hiện chỉ đạo vận hành</td><td>🔁 Nhắc nhở &gt;3 lần → buộc thôi việc</td></tr>
+      <tr><td>🏍️ Mất/hư hỏng xe khách</td><td>✅ Đúng quy định: 20% giá trị · ❌ Sai quy định: 70%</td></tr>
+    </table>
+
+    <div class="note" style="background:var(--navy-bg)"><span class="em">🚪</span><div><b>Cam kết nghỉ việc:</b> Báo trước ≥21 ngày · Bàn giao đồng phục & đồ dùng ngày cuối · Chưa bàn giao → quản lý được giữ lương.</div></div>
+  </div>
+</section>
+
+<!-- ================= PHẦN II ================= -->
+<section id="p2">
+  <div class="sec-head" style="background:linear-gradient(135deg,#0aa88f,#2bc4a8)">
+    <div class="ic">🤝</div>
+    <div><h2>PHẦN II — Giao tiếp Khách hàng & F&B</h2><div class="sub">3W · Quy trình đón khách · Xử lý khiếu nại · Cross-sell</div></div>
+  </div>
+  <div class="sec-body">
+
+    <h3 class="block-title">🌟 Ba trụ cột dịch vụ (3W)</h3>
+    <div class="grid c3">
+      <div class="card bg-teal" style="text-align:center">👋<br><b>WELCOME</b><br><span style="font-size:12px">Đón khách &lt;10 giây, đứng dậy, mỉm cười</span></div>
+      <div class="card bg-teal" style="text-align:center">👁️<br><b>WATCH</b><br><span style="font-size:12px">Chủ động nhận diện nhu cầu, không chờ hỏi</span></div>
+      <div class="card bg-teal" style="text-align:center">🚪<br><b>WARM FAREWELL</b><br><span style="font-size:12px">Cảm ơn, hẹn gặp lại, dắt xe tiễn khách</span></div>
+    </div>
+    <div class="note" style="background:var(--teal-bg)"><span class="em">💡</span><div>Chỉ khoảng 1/26 khách không hài lòng thật sự phản ánh — số còn lại âm thầm không quay lại.</div></div>
+
+    <h3 class="block-title">🚶 Quy trình tiếp đón khách</h3>
+    <div class="steps">
+      <div class="step"><div class="num" style="background:var(--teal-bg)">🧍</div><div class="tx"><b>Dừng việc, đứng dậy</b><span>Nhìn mắt + mỉm cười, không cúi mặt vào điện thoại</span></div></div>
+      <div class="step"><div class="num" style="background:var(--teal-bg)">🏍️</div><div class="tx"><b>Chủ động dắt xe, xếp xe ngay ngắn</b><span>"On Time xin chào, em dắt xe giúp mình ạ"</span></div></div>
+      <div class="step"><div class="num" style="background:var(--teal-bg)">❓</div><div class="tx"><b>Hỏi khách mới/cũ → tư vấn đúng gói</b><span>Gói 35.000đ/5h là gói chính, giới thiệu 2 quy định cốt lõi: yên tĩnh & không đồ ăn có mùi</span></div></div>
+      <div class="step"><div class="num" style="background:var(--teal-bg)">💳</div><div class="tx"><b>Check-in KiotViet, nhận tiền 2 tay</b><span>Gửi hóa đơn, dặn khách giữ lại bill</span></div></div>
+      <div class="step"><div class="num" style="background:var(--teal-bg)">🧹</div><div class="tx"><b>Check tầng 45–60 phút/lần</b><span>Dọn cốc khách đã về trong &lt;5 phút</span></div></div>
+    </div>
+
+    <h3 class="block-title">🏆 5 Nguyên tắc giao tiếp vàng</h3>
+    <table class="dt">
+      <tr><th>Nguyên tắc</th><th>👍 Làm đúng</th><th>👎 Làm sai</th></tr>
+      <tr><td>🤫 Giọng nhỏ + chậm</td><td>Nói vừa đủ nghe, đi lại khẽ</td><td>Gọi nhau í ới qua quầy</td></tr>
+      <tr><td>👁️ Giao tiếp bằng mắt</td><td>Nhìn khách khi nói chuyện</td><td>Vừa gõ máy vừa trả lời</td></tr>
+      <tr><td>🙅 Không nói "Không"</td><td>Đề xuất giải pháp thay thế</td><td>"Hết chỗ rồi." (im lặng)</td></tr>
+      <tr><td>🏷️ Dùng tên khách</td><td>"Anh Hùng ơi!"</td><td>Gọi "Bạn"/"Khách" trước mặt</td></tr>
+      <tr><td>📵 Không điện thoại cá nhân</td><td>Cất túi/ngăn kéo</td><td>Lướt TikTok trước mặt khách</td></tr>
+    </table>
+
+    <h3 class="block-title">🧯 Xử lý tình huống khó — Nguyên tắc LAST</h3>
+    <div class="grid c4">
+      <div class="card bg-teal" style="text-align:center">👂<br><b>LISTEN</b><br><span style="font-size:11.5px">Nghe hết, không cắt lời</span></div>
+      <div class="card bg-teal" style="text-align:center">🙏<br><b>APOLOGIZE</b><br><span style="font-size:11.5px">Xin lỗi vì bất tiện</span></div>
+      <div class="card bg-teal" style="text-align:center">🔧<br><b>SOLVE</b><br><span style="font-size:11.5px">Xử lý ngay lập tức</span></div>
+      <div class="card bg-teal" style="text-align:center">💌<br><b>THANK</b><br><span style="font-size:11.5px">Cảm ơn góp ý của khách</span></div>
+    </div>
+    <div class="note" style="background:var(--red-bg)"><span class="em">🚨</span><div>Khách nổi giận/cãi → giữ bình tĩnh, gọi ngay Trưởng nhóm/CEO qua Zalo, ghi chép sự việc và gửi nhóm Zalo trong 30 phút. Báo "không có gì" khi khách phàn nàn → <b>thẻ Vàng ngay</b>.</div></div>
+
+    <h3 class="block-title">🍿 Cross-sell F&B</h3>
+    <div class="grid c2">
+      <div class="card bg-teal"><b class="ttl">🎯 Thời điểm vàng</b><ul>
+        <li><span class="em">🎫</span> Check-in → gợi ý 100% khách</li>
+        <li><span class="em">🌙</span> Sau 23h → gợi ý Redbull</li>
+        <li><span class="em">👥</span> Nhóm 3+ → gợi ý snack ăn chung</li>
+      </ul><span class="tag green" style="margin-top:6px;display:inline-block">🎯 Mục tiêu F&B: 7–9% → 15%</span></div>
+      <div class="card bg-red"><b class="ttl">🚫 Câu CẤM nói</b><ul>
+        <li><span class="em">❌</span> "Mua gì không?" → ✅ "Cà phê hay nước ngọt ạ?"</li>
+        <li><span class="em">❌</span> "Không mua thì thôi"</li>
+        <li><span class="em">❌</span> Im lặng, không gợi ý</li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PHẦN III ================= -->
+<section id="p3">
+  <div class="sec-head" style="background:linear-gradient(135deg,#e08a1e,#f2a740)">
+    <div class="ic">👔</div>
+    <div><h2>PHẦN III — Tác phong & Trang phục</h2><div class="sub">Đồng phục · Tư thế · Quy định ngoài ca</div></div>
+  </div>
+  <div class="sec-body">
+    <div class="grid c2">
+      <div class="card bg-amber"><b class="ttl">👕 Trang phục</b><ul>
+        <li><span class="em">🎽</span> Tạp dề đồng phục — bắt buộc cả ca</li>
+        <li><span class="em">👖</span> Quần dài tối màu (đen/xanh sẫm)</li>
+        <li><span class="em">👟</span> Giày/dép bít mũi, không dép lê/cao gót</li>
+        <li><span class="em">💇</span> Tóc gọn gàng, không nước hoa nồng</li>
+      </ul></div>
+      <div class="card bg-amber"><b class="ttl">🧍 Tác phong làm việc</b><ul>
+        <li><span class="em">🧘</span> Đứng/ngồi thẳng lưng, bao quát không gian</li>
+        <li><span class="em">🚫</span> Không gục đầu, chống cằm, ưỡn ẹo</li>
+        <li><span class="em">🐾</span> Di chuyển khẽ khàng, không kéo lê dép</li>
+        <li><span class="em">📴</span> Điện thoại cá nhân để chế độ rung</li>
+      </ul></div>
+    </div>
+    <h3 class="block-title">🕐 Nhân sự đến trạm ngoài ca làm việc</h3>
+    <div class="card bg-amber"><ul style="display:grid;grid-template-columns:1fr 1fr;gap:6px 14px">
+      <li><span class="em">🙋</span> Xem như khách hàng bình thường</li>
+      <li><span class="em">🚫</span> Không tự ý vào quầy bar/kho</li>
+      <li><span class="em">🤫</span> Giữ âm lượng tối thiểu, không tụ tập</li>
+      <li><span class="em">🎽</span> Không mặc tạp dề khi không trực ca</li>
+    </ul></div>
+  </div>
+</section>
+
+<!-- ================= PHẦN IV ================= -->
+<section id="p4">
+  <div class="sec-head" style="background:linear-gradient(135deg,#8a5cf6,#a97bff)">
+    <div class="ic">💻</div>
+    <div><h2>PHẦN IV — Sử dụng phần mềm KiotViet</h2><div class="sub">Gói dịch vụ · Check-in/out · Mở–kết ca</div></div>
+  </div>
+  <div class="sec-body">
+    <h3 class="block-title">💳 Các gói dịch vụ chính</h3>
+    <div class="grid c3">
+      <div class="card bg-violet">☕ <b>5h tập trung</b><br><span style="font-size:12px">5h + 1 nước tự pha</span></div>
+      <div class="card bg-violet">🚀 <b>10h năng suất</b><br><span style="font-size:12px">10h + 1 nước tự pha</span></div>
+      <div class="card bg-violet">💸 <b>3h tiết kiệm</b><br><span style="font-size:12px">3h sử dụng dịch vụ</span></div>
+      <div class="card bg-violet">➕ <b>1h hoàn thành</b><br><span style="font-size:12px">Chỉ dùng để gia hạn</span></div>
+      <div class="card bg-violet">🌙 <b>Combo đêm</b><br><span style="font-size:12px">Sau 22h → tới 07h sáng</span></div>
+      <div class="card bg-violet">🗓️ <b>1 tháng hiệu quả</b><br><span style="font-size:12px">30 ngày + giảm 20% menu + 2h phòng</span></div>
+    </div>
+
+    <h3 class="block-title">🔁 Quy trình thao tác</h3>
+    <div class="steps">
+      <div class="step"><div class="num" style="background:var(--violet-bg)">📝</div><div class="tx"><b>Check-in:</b> chọn bàn → SĐT/tên khách → chọn combo + Đếm giờ</div></div>
+      <div class="step"><div class="num" style="background:var(--violet-bg)">🍽️</div><div class="tx"><b>Thêm đồ ăn/uống</b> nếu khách có nhu cầu</div></div>
+      <div class="step"><div class="num" style="background:var(--violet-bg)">💳</div><div class="tx"><b>Thanh toán</b> → chọn đúng phương thức → in hóa đơn</div></div>
+      <div class="step"><div class="num" style="background:var(--violet-bg)">🚪</div><div class="tx"><b>Check-out:</b> xin lại hóa đơn → kiểm phát sinh → đóng bàn</div></div>
+      <div class="step"><div class="num" style="background:var(--violet-bg)">🔓🔒</div><div class="tx"><b>Mở ca:</b> nhập tiền đầu ca &nbsp;·&nbsp; <b>Kết ca:</b> nhập tiền cuối → chụp phiếu → kết ca trên On Time HUB</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PHẦN V ================= -->
+<section id="p5">
+  <div class="sec-head" style="background:linear-gradient(135deg,#12b886,#2bd6a0)">
+    <div class="ic">🔧</div>
+    <div><h2>PHẦN V — Vận hành trang thiết bị</h2><div class="sub">Wifi · Điều hòa · Điện · Thang máy</div></div>
+  </div>
+  <div class="sec-body">
+    <div class="grid c4">
+      <div class="card bg-green"><b class="ttl">📶 Wifi</b><ul>
+        <li><span class="em">🔑</span> yentinhtaptrung</li>
+        <li><span class="em">🔄</span> Giữ nút 3–5s để reset</li>
+      </ul></div>
+      <div class="card bg-green"><b class="ttl">❄️ Điều hòa</b><ul>
+        <li><span class="em">🌡️</span> 25°C, gió mức 2</li>
+        <li><span class="em">🥶</span> Thấp nhất 23°C</li>
+      </ul></div>
+      <div class="card bg-green"><b class="ttl">💡 Điện</b><ul>
+        <li><span class="em">🌆</span> Đèn sân: bật 18h, tắt 6h</li>
+        <li><span class="em">🔌</span> Tắt ổ điện khi không dùng</li>
+      </ul></div>
+      <div class="card bg-green"><b class="ttl">🛗 Thang máy</b><ul>
+        <li><span class="em">⚡</span> Reset aptomat, chờ 5s</li>
+        <li><span class="em">🔑</span> Kẹt khách → dùng chìa riêng</li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PHẦN VI ================= -->
+<section id="p6">
+  <div class="sec-head" style="background:linear-gradient(135deg,#e64a5b,#f0707e)">
+    <div class="ic">🧹</div>
+    <div><h2>PHẦN VI — Vệ sinh & Kiểm tra tầng</h2><div class="sub">Nguyên tắc chung áp dụng toàn hệ thống</div></div>
+  </div>
+  <div class="sec-body">
+    <table class="dt">
+      <tr><th>Ca</th><th>Việc cần làm</th></tr>
+      <tr><td>🌆 Tối (18h–19h)</td><td>Kiểm điện các tầng, tắt đèn trần, bật đèn bàn</td></tr>
+      <tr><td>🌙 Đêm (~2h sáng)</td><td>Kiểm tra & tắt đèn khu vực không sử dụng</td></tr>
+      <tr><td>🌅 Sáng nhận ca</td><td>Kiểm đèn các tầng, dọn cốc thừa và rác</td></tr>
+      <tr><td>👤 Ca một người</td><td>Dọn cốc, rác, tắt điện tối thiểu mỗi 2 tiếng</td></tr>
+    </table>
+    <div class="note" style="background:var(--red-bg)"><span class="em">🧻</span><div>Thay túi rác khi &gt;70% đầy · Bình nước luôn đầy · Rửa cốc ngay sau khi khách dùng xong, không để cốc bẩn trong bồn rửa.</div></div>
+  </div>
+</section>
+
+<footer>📎 Quy trình thao tác chuẩn (SOP) chi tiết theo từng trạm → xem tài liệu SOP nội bộ<br>On Time Study Space · Tài liệu nội bộ — Vui lòng không sao chép, chia sẻ ra ngoài hệ thống</footer>
+
+</div>
+<script>
+  // Chặn truy cập nếu không có mật khẩu
+  var pass = prompt("Tài liệu nội bộ On Time. Vui lòng nhập mật khẩu:");
+  if(pass !== "Ontimess2026") { 
+    // Thay chữ Ontime2026 bằng mật khẩu bạn muốn
+    document.body.innerHTML = "<h2 style='text-align:center; margin-top:50px; color:#26314f;'>Mật khẩu không đúng. Vui lòng tải lại trang và thử lại!</h2>";
+  }
+</script>
+</body>
+</html>
