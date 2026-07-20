@@ -405,13 +405,63 @@ footer a{color:var(--navy);font-weight:700;text-decoration:none}
 <footer>📎 Quy trình thao tác chuẩn (SOP) chi tiết theo từng trạm → xem tài liệu SOP nội bộ<br>On Time Study Space · Tài liệu nội bộ — Vui lòng không sao chép, chia sẻ ra ngoài hệ thống</footer>
 
 </div>
+<!-- ================= MÀN HÌNH KHÓA BẢO MẬT ================= -->
+<div id="auth-overlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f4f6fb; z-index: 99999; display: flex; align-items: center; justify-content: center; transition: opacity 0.3s ease; backdrop-filter: blur(5px);">
+  <div style="background: #fff; padding: 40px 30px; border-radius: 24px; box-shadow: 0 12px 40px rgba(38,49,79,.12); text-align: center; max-width: 380px; width: 90%; border: 1px solid #e7ebf7;">
+    <div style="font-size: 48px; margin-bottom: 12px;">🏢</div>
+    <h2 style="color: #2E5F9C; margin: 0 0 8px; font-size: 22px;">Xác thực nội bộ</h2>
+    <p style="color: #8b93ad; font-size: 14px; margin: 0 0 24px; line-height: 1.5;">Vui lòng nhập mật khẩu để truy cập Cẩm nang Đào tạo Nhân sự On Time.</p>
+    
+    <input type="password" id="auth-pass" placeholder="Nhập mật khẩu..." style="width: 100%; padding: 14px 16px; border: 2px solid #e7ebf7; border-radius: 12px; font-size: 15px; outline: none; transition: all 0.2s; margin-bottom: 12px; box-sizing: border-box; color: #26314f; font-family: inherit;">
+    
+    <p id="auth-err" style="color: #e64a5b; font-size: 13px; margin: 0 0 16px; display: none; font-weight: 600; text-align: left;">⚠️ Mật khẩu không chính xác!</p>
+    
+    <button id="auth-btn" style="width: 100%; background: #2E5F9C; color: #fff; border: none; padding: 14px; border-radius: 12px; font-size: 15px; font-weight: 700; cursor: pointer; transition: background 0.2s; box-shadow: 0 4px 12px rgba(46,95,156,.2);">Mở khóa tài liệu</button>
+  </div>
+</div>
+
 <script>
-  // Chặn truy cập nếu không có mật khẩu
-  var pass = prompt("Tài liệu nội bộ On Time. Vui lòng nhập mật khẩu:");
-  if(pass !== "Ontimess2026") { 
-    // Thay chữ Ontime2026 bằng mật khẩu bạn muốn
-    document.body.innerHTML = "<h2 style='text-align:center; margin-top:50px; color:#26314f;'>Mật khẩu không đúng. Vui lòng tải lại trang và thử lại!</h2>";
-  }
+  document.addEventListener("DOMContentLoaded", function() {
+    const overlay = document.getElementById("auth-overlay");
+    const input = document.getElementById("auth-pass");
+    const btn = document.getElementById("auth-btn");
+    const err = document.getElementById("auth-err");
+
+    // Tự động focus vào ô nhập khi load trang
+    input.focus();
+
+    // Hàm kiểm tra mật khẩu
+    function checkPass() {
+      // Thay đổi mật khẩu tại đây
+      if(input.value === "Ontime2026") {
+        overlay.style.opacity = '0';
+        setTimeout(() => { 
+          overlay.style.display = 'none'; 
+        }, 300); // Đợi 0.3s cho hiệu ứng mờ dần (fade out)
+      } else {
+        err.style.display = 'block';
+        input.style.borderColor = '#e64a5b'; // Đổi viền input sang màu đỏ
+        input.style.backgroundColor = '#fdeced';
+      }
+    }
+
+    // Bắt sự kiện click nút
+    btn.addEventListener("click", checkPass);
+
+    // Bắt sự kiện ấn phím Enter
+    input.addEventListener("keypress", function(e) {
+      if(e.key === "Enter") checkPass();
+    });
+    
+    // Xóa cảnh báo đỏ khi người dùng bắt đầu gõ lại
+    input.addEventListener("input", function() {
+      err.style.display = 'none';
+      input.style.borderColor = '#e7ebf7';
+      input.style.backgroundColor = '#fff';
+    });
+  });
 </script>
+<!-- ================= KẾT THÚC MÀN HÌNH KHÓA ================= -->
+
 </body>
 </html>
